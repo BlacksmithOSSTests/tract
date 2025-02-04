@@ -12,7 +12,7 @@ env:
 jobs:
   build_doc:
     name: Build doc
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     if: github.repository == 'sonos/tract'
 
     steps:

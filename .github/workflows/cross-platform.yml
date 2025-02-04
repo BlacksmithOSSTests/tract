@@ -31,7 +31,7 @@ jobs:
           - wasm32-unknown-unknown
           - wasm32-wasi
 
-    runs-on: ubuntu-20.04
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     permissions:
       id-token: write
       contents: read
@@ -51,7 +51,7 @@ jobs:
         role-to-assume: arn:aws:iam::567805100031:role/github-runner-tract-ci
         aws-region: us-east-2
 
-    - uses: actions/cache@v4
+    - uses: useblacksmith/cache@v5
       with:
         path: |
           ~/.rustup
