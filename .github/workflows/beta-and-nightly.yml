@@ -16,7 +16,7 @@ jobs:
         rust: [ beta, nightly ]
       fail-fast: false
 
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
 
     steps:
     - uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
       id: date
       run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-    - uses: actions/cache@v4
+    - uses: useblacksmith/cache@v5
       with:
         path: |
           ~/.rustup
@@ -53,7 +53,7 @@ jobs:
     strategy:
       matrix:
         rust: [ 1.75.0, beta ]
-        os: [ ubuntu-latest, macOS-latest ]
+        os: [ blacksmith-4vcpu-ubuntu-2204, macOS-latest ]
       fail-fast: false
     runs-on: ${{ matrix.os }}
     env:
@@ -71,7 +71,7 @@ jobs:
   cargo-clippy:
     strategy:
       matrix:
-        os: [ ubuntu-latest, macOS-latest ]
+        os: [ blacksmith-4vcpu-ubuntu-2204, macOS-latest ]
         rust: [ stable, beta, nightly ]
       fail-fast: false
     runs-on: ${{ matrix.os }}
@@ -96,7 +96,7 @@ jobs:
     strategy:
       fail-fast: false
 
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
 
     steps:
     - uses: actions/checkout@v4

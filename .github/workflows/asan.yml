@@ -2,6 +2,7 @@ name: Sanitized build tests
 
 on:
   workflow_dispatch:
+  pull_request:
   schedule:
     - cron:  '0 5 * * *'
 
@@ -14,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, macOS-latest ]
+        os: [ blacksmith-2vcpu-ubuntu-2204, blacksmith-4vcpu-ubuntu-2204, macOS-latest ]
 
     runs-on: ${{matrix.os}}
 

@@ -12,7 +12,7 @@ env:
 jobs:
   release:
     name: Create release
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Extract version tag
         id: version

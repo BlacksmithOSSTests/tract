@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-2019, macos-14]
+        os: [blacksmith-4vcpu-ubuntu-2204, windows-2019, macos-14]
 
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
         with:
           rust-version: stable
 
-      - uses: actions/setup-python@v3
+      - uses: useblacksmith/setup-python@v6
 
       - name: Install rust toolchains
         if: startsWith(matrix.os, 'macOS')
@@ -61,7 +61,7 @@ jobs:
 
   make_sdist:
     name: Make SDist
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
     - uses: actions/checkout@v4
 
@@ -75,7 +75,7 @@ jobs:
 
   upload_all:
     needs: [build_wheels, make_sdist]
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     if: (github.event_name == 'release' && github.event.action == 'published') || inputs.publish
 
     steps:
